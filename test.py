@@ -37,7 +37,7 @@ def linear_search(list, item):
             return n
     return None
 
-myList1 = [1,3,4,6,7,8,10,12,23,45,56,78,99]
+#myList1 = [1,3,4,6,7,8,10,12,23,45,56,78,99]
 #print(linear_search(myList1,11))
 
 
@@ -66,7 +66,136 @@ def binary_search(list, item):
 # print(linear_search(myList2,13))
 # print(binary_search(myList2,13))
 
-mevalar = ['olma','anor','olcha','behi','shaftoli','anjir']
-mevalar.sort()
-print(mevalar)
-print(binary_search(mevalar,'shaftoli'))
+#mevalar = ['olma','anor','olcha','behi','shaftoli','anjir']
+#mevalar.sort()
+#print(mevalar)
+#print(binary_search(mevalar,'shaftoli'))
+
+
+class Node:
+    """Tugun (node) obyekti"""
+    def __init__(self,data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    """Linked List obyekti"""
+    def __init__(self):
+        self.head = None
+    
+    def printList(self):
+        temp = self.head
+        while temp:
+            print(temp.data)
+            temp = temp.next
+    
+    def push(self,new_data):
+        """List boshiga tugun qo'shish"""
+        # Yangi node yaratamiz
+        new_node = Node(new_data)
+        # List boshini keyingi o'ringa suramiz
+        new_node.next = self.head
+        # Yangi nodeni list boshiga qo'yamiz
+        self.head = new_node
+        
+    def insertAfter(self,prev_node, new_data):
+        """O'rtasiga tugun qo'shish"""
+        if prev_node is None:
+            print("Tugun mavjud emas")
+            return
+        # Yangi tugun qo'shamiz
+        new_node = Node(new_data)
+        # Yangi tugunni keyingi tugunga bog'laymiz
+        new_node.next = prev_node.next
+        # Avvalgi tugunni yangi tugunga bog'laymiz
+        prev_node.next = new_node
+    
+    def append(self, new_data):
+        """List oxiriga tugun qo'shish"""
+        # Yangi tugun yaratamiz
+        new_node = Node(new_data)
+        # List bo'sh emasligini tekshriamiz
+        if self.head is None:
+            # Bo'sh bo'lsa yangi tugun list boshiga tushadi
+            self.head = new_node
+            return
+        # Aks holda List oxiriga boramiz
+        last = self.head
+        while last.next:
+            last = last.next
+        last.next = new_node
+    
+    def deleteNode(self,key):
+        """Listdan qiymat o'chirish"""
+        # List boshini topib olamiz
+        temp = self.head
+        # Birinchi tugunni tekshiramiz
+        if (temp and temp.data == key):
+            self.head = temp.next
+            temp = None
+            return
+        # Aks holda keyingi tugunlarni qarab chiqamiz
+        while temp:
+            if temp.data == key:
+                break
+            prev = temp
+            temp = temp.next
+        # Agar qiymat topilmasa
+        if temp==None:
+            return
+        # Tugunni listdan o'chiramiz
+        prev.next = temp.next
+        temp = None
+        
+        
+        
+#dushanba = LinkedList()
+#dushanba.head = Node('Dushanba')
+#seshanba = Node("Seshanba")
+#chorshanba = Node('Chorshanba')
+
+#dushanba.head.next = seshanba
+#seshanba.next = chorshanba
+#print(seshanba.next.data)
+        
+
+# selection sort 
+def findMax(array):
+    max = array[0]
+    max_index = 0
+    for n in range(1,len(array)):
+        if array[n]>max:
+            max = array[n]
+            max_index = n
+    return max_index
+
+def selectSort(array):
+    newArray = []
+    for n in range(len(array)):
+        max_index = findMax(array)
+        newArray.append(array.pop(max_index))
+    return newArray
+
+array = [3, 4, 1, 6, 10, 20, 9, 8]
+#newArray = selectSort(array)
+#print(newArray)
+
+
+#Recursion fungsiya
+def fact(x):
+    print(x,end=' ')
+    if x == 1:
+        return 1
+    else:
+        return x * fact(x-1)
+
+#print(fact(5))
+
+def sum(list):
+    if list == []:
+        return 0
+    return list[0]+sum(list[1:])
+
+
+son = [1,2,3,45,6,7,8]
+print(sum(son))
