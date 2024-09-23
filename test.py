@@ -198,4 +198,36 @@ def sum(list):
 
 
 son = [1,2,3,45,6,7,8]
-print(sum(son))
+#print(sum(son))
+
+
+# Quick sort
+
+from random import randrange
+
+def quick_sort(list):
+    if len(list) < 2:
+        return list
+    else:
+        pivot = list.pop(randrange(len(list)))
+        kichik = [ i for i in list if i < pivot ]
+        katta = [i for i in list if i > pivot]
+        return quick_sort(kichik) + [pivot] + quick_sort(katta)
+    
+    
+list = [21,324,11.2143,45]
+#print(quick_sort(list))
+
+# Bubble sort
+
+def bubbleSort(array: list):
+    for i in range(len(array)):
+        for j in range(len(array) - i - 1):
+            if array[j] > array[j+1]:
+                array[j], array[j+1] = array[j+1], array[j]
+            print(array)
+                
+                
+                
+array = [32,53,22,55,432,31]
+bubbleSort(array)
