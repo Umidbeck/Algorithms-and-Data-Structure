@@ -295,4 +295,18 @@ def fractional_knapsack( items, capacity):
 items = [Item(60, 10), Item(100, 20), Item(120, 30)]
 capacity = 50  
 
-print(f"Maximum value in Knapsack: {fractional_knapsack(items, capacity)}")
+#print(f"Maximum value in Knapsack: {fractional_knapsack(items, capacity)}")
+
+
+def vowelStrings(words, left, right):
+
+    result = 0
+    vowels = {'a', 'e', 'i', 'o', 'u'}
+
+    for i in range(left, right + 1):
+        word = words[i]
+        if word[0] in vowels and word[-1] in vowels:
+            result += 1
+            print(word)
+
+    return result
