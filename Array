@@ -1,0 +1,69 @@
+Array — bu bir xil turdagi ma'lumotlarni saqlash uchun ishlatiladigan ma'lumotlar tuzilmasi. U dasturlashda ma'lumotlarni tartiblangan holda saqlash, boshqarish va ularga tezda kirish imkonini beradi. Arraylar dasturlash tillarida keng tarqalgan va turli xil maqsadlar uchun ishlatiladi.
+Asosiy xususiyatlar
+
+    Tartiblangan tuzilma: Arraydagi elementlar bir-biridan ma'lum bir tartibda joylashgan va har bir element o'zining indeks raqamiga ega.
+
+    Bir xil turdagi elementlar: Arrayda saqlanadigan barcha elementlar bir xil turdagi bo'lishi kerak. Masalan, agar integer array bo'lsa, unda faqat butun sonlar saqlanishi mumkin.
+
+    Statik yoki dinamik: Ba'zi dasturlash tillarida arraylar statik (ma'lum o'lchamda) yoki dinamik (o'lchami o'zgaruvchan) bo'lishi mumkin.
+
+Turli xil arraylar
+
+    Bir o'lchovli array: Bu oddiy array bo'lib, u bitta indeksga ega. Misol: [1, 2, 3, 4, 5].
+
+    Ko'p o'lchovli array: Bu bir nechta indekslardan iborat array bo'lib, ma'lumotlar ko'p o'lchovda joylashgan. Eng keng tarqalgan ko'p o'lchovli array — bu ikki o'lchovli array (matritsa). Misol: [[1, 2], [3, 4], [5, 6]].
+
+    Assotsiativ array: Bu tugmalar (kalitlar) va qiymatlardan iborat bo'lgan ma'lumotlar tuzilmasidir. U ko'pincha "hash table" yoki "dictionary" sifatida ataladi. Misol: {'name': 'Ali', 'age': 25}.
+
+Arraylar bilan ishlash
+1. Elementlarga kirish
+
+Elementlarga kirish uchun ularning indeksidan foydalaniladi. Indeks 0 dan boshlanadi.
+
+python
+
+arr = [10, 20, 30, 40]
+print(arr[0])  # 10
+print(arr[2])  # 30
+
+2. Elementlarni qo'shish va o'chirish
+
+Arrayga yangi elementlarni qo'shish yoki mavjud elementlarni o'chirish juda oson.
+
+    Qo'shish:
+
+python
+
+arr.append(50)  # [10, 20, 30, 40, 50]
+
+    O'chirish:
+
+python
+
+arr.remove(30)  # [10, 20, 40, 50]
+
+3. Elementlar sonini aniqlash
+
+Arrayning uzunligini aniqlash uchun len() funksiyasidan foydalaniladi.
+
+python
+
+length = len(arr)  # 4
+
+Arraylar afzalliklari
+
+    Tez kirish: Har qanday elementga kirish O(1) vaqt ichida amalga oshiriladi, bu esa arraylarni ma'lumotlar tuzilmalarida juda samarali qiladi.
+    Tuzilish oddiyligi: Arraylar oddiy va tushunarli tuzilma bo'lib, dasturlashda keng qo'llaniladi.
+
+Arraylar kamchiliklari
+
+    O'lcham o'zgaruvchanligi: Statik arraylar o'z o'lchamlarini o'zgartira olmaydi. Agar kerak bo'lsa, yangi array yaratish va mavjud elementlarni ko'chirish kerak bo'ladi.
+    Elementlar turiga muhtojlik: Arrayda saqlanadigan barcha elementlar bir xil turda bo'lishi kerak, bu esa ba'zan cheklovlar keltirib chiqarishi mumkin.
+    Bo'sh joy: Agar arrayning o'lchami kerakli o'lchamdan kattaroq bo'lsa, bo'sh joy isrof bo'lishi mumkin.
+
+Arraylar va boshqa ma'lumotlar tuzilmalari
+
+Arraylar ko'plab boshqa ma'lumotlar tuzilmalari (masalan, ro'yxatlar, to'plamlar, bog'langan ro'yxatlar) bilan taqqoslanganda ba'zi afzalliklar va kamchiliklarga ega. Har bir tuzilma o'zining o'ziga xos xususiyatlari, afzalliklari va kamchiliklariga ega, shuning uchun dasturchilar konkret vazifalarga qarab to'g'ri ma'lumotlar tuzilmasini tanlashlari zarur.
+Xulosa
+
+Array — bu dasturlashda ma'lumotlarni saqlash va boshqarish uchun juda foydali va muhim tuzilma. U samaradorligi va oddiyligi bilan dasturchilar orasida juda ommalashgan. Arraylardan foydalanish, algoritmlar va dasturlarni ishlab chiqishda muhim ahamiyatga ega.

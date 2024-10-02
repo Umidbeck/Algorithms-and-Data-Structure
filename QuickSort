@@ -1,0 +1,62 @@
+QuickSort — bu tezlikka asoslangan saralash algoritmi bo'lib, uning murakkabligi O(n log n) ga teng va u odatda juda samarali bo'ladi. QuickSort tasodifiy yoki tanlangan "pivot" (markaziy element) ga asoslanadi va bu pivot atrofidagi elementlarni saralashga yordam beradi. Quyida QuickSort algoritmining ishlash prinsipi, amallari, afzalliklari va kamchiliklari haqida batafsil ma'lumot berilgan.
+QuickSortning Asosiy Prinsipi
+
+    Pivotni tanlash: Saralash uchun bir pivot elementi tanlanadi. Bu har qanday element bo'lishi mumkin: birinchi, oxirgi yoki tasodifiy.
+
+    Partitsiya qilish: Listni pivotdan foydalangan holda ikki qismga bo'linadi:
+        Birinchi qism — pivotdan kichik yoki teng bo'lgan elementlar.
+        Ikkinchi qism — pivotdan katta bo'lgan elementlar.
+
+    Rekursiv saralash: Yuqoridagi jarayon har bir sublist uchun qayta takrorlanadi, ya'ni:
+        Kichik elementlar qismi uchun QuickSort chaqiriladi.
+        Katta elementlar qismi uchun ham QuickSort chaqiriladi.
+
+    Natijani birlashtirish: Rekursiya tugagandan so'ng, natijalar qayta birlashtiriladi, va saralangan list olinadi.
+
+QuickSort Algoritmi
+
+Quyida QuickSort algoritmini Python dasturlash tilida amalga oshirilishi ko'rsatilgan:
+
+python
+
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr  # Agar ro'yxat bo'sh yoki bitta elementli bo'lsa, qaytaramiz
+
+    pivot = arr[len(arr) // 2]  # Pivot sifatida o'rtadagi elementni tanlaymiz
+    left = [x for x in arr if x < pivot]  # Pivotdan kichik elementlar
+    middle = [x for x in arr if x == pivot]  # Pivotga teng elementlar
+    right = [x for x in arr if x > pivot]  # Pivotdan katta elementlar
+
+    return quicksort(left) + middle + quicksort(right)  # Rekursiv chaqiruv va birlashtirish
+
+# Misol
+arr = [3, 6, 8, 10, 1, 2, 1]
+sorted_arr = quicksort(arr)
+print(sorted_arr)  # Natija: [1, 1, 2, 3, 6, 8, 10]
+
+QuickSortning Afzalliklari
+
+    Yuqori samaradorlik: QuickSortning o'rtacha ishlash vaqti O(n log n) bo'lib, bu ko'p hollarda samarali hisoblanadi.
+    Joyni samarali ishlatish: QuickSort joyni samarali ishlatadi, chunki u in-place (ro'yxat ichida) saralash algoritmidir. Bu ko'p xotira sarf qilmaydi.
+    Kichik ma'lumotlar to'plamlarida tezlik: Kichik ro'yxatlar uchun QuickSort tezroq ishlaydi.
+
+QuickSortning Kamchiliklari
+
+    Eng yomon holat: Agar pivot sifatida eng katta yoki eng kichik element tanlansa, o'rtacha ishlash vaqti O(n^2) ga teng bo'ladi. Bu holat, masalan, tartiblangan ro'yxatlarda yuz berishi mumkin.
+    Rekursiv cheklovlar: Rekursiv chaqiruvlar juda chuqur bo'lishi mumkin, bu esa stack overflow ga olib kelishi mumkin, agar juda katta ma'lumotlar bilan ishlayotgan bo'lsangiz.
+
+QuickSortni Optimallashtirish
+
+    Tasodifiy pivot tanlash: Pivotni tasodifiy tanlash yomon holatlarni kamaytiradi.
+    Kichik ro'yxatlar uchun boshqa algoritmlar: Kichik ro'yxatlar uchun, masalan, Insertion Sort dan foydalanish QuickSortni yanada tezlashtirishi mumkin.
+
+QuickSortning Tizimlarda Foydalanishi
+
+    QuickSort ko'plab tizimlar va dasturlash tillarida standart saralash algoritmi sifatida qo'llaniladi.
+    Tez va samarali ishlashini ta'minlash uchun ko'plab dasturlash tillarida (masalan, C, Java, Python) QuickSort implementatsiyalari mavjud.
+
+Xulosa
+
+QuickSort — bu tez va samarali saralash algoritmi bo'lib, ko'p hollarda ko'plab ma'lumotlar to'plamlarini saralashda muvaffaqiyatli qo'llaniladi. U o'zining samaradorligi va xotira sarfini minimal darajada saqlash xususiyati bilan tanilgan, lekin ba'zi holatlarda, masalan, tartiblangan ro'yxatlar bilan ishlaganda, muammolarga olib kelishi mumkin. QuickSort algoritmi dasturchilar uchun zarur bo'lgan asosiy ma'lumotlar tuzilmalari va algoritmlaridan biridir.
+

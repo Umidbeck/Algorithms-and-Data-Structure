@@ -1,0 +1,101 @@
+Breadth-First Search (BFS) Haqida To'liq Ma'lumot
+
+Breadth-First Search (BFS) — bu graf yoki daraxtlarni izlash va qidirish uchun ishlatiladigan algoritm bo'lib, u tugunlarni kengayish tartibida (ya'ni, darajadagi tugunlarni birinchi qidirish) tekshiradi. BFS, qirralar bo'ylab tugunlar orasidagi bog'lanishlarni bosqichma-bosqich o'rganadi va har bir darajadagi tugunlarni tekshirgach, keyingisi darajaga o'tadi.
+Asosiy Tushunchalar
+
+    Tugun (Vertex): Graf yoki daraxtdagi element.
+    Qirra (Edge): Tugunlar o'rtasidagi bog'lanish.
+    Kengaytirish (Expanding): Qo'shni tugunlarni ko'rish va ularni tekshirish jarayoni.
+    Navbat (Queue): Tugunlarni tekshirish tartibini saqlash uchun foydalaniladigan ma'lumotlar tuzilmasi.
+
+Algoritmning Jarayoni
+
+    Algoritm boshlanishida birinchi tugun tanlanadi va visited ro'yxatiga qo'shiladi.
+    Tugun navbatga qo'shiladi.
+    Tugunni chiqarib, uning qo'shni tugunlari tekshiriladi:
+        Agar qo'shni tugun hali visited ro'yxatida bo'lmasa, u visited ro'yxatiga qo'shiladi va navbatga qo'shiladi.
+    Bu jarayon tugunlar navbati bo'sh bo'lgunga qadar davom etadi.
+
+BFS Misoli
+
+Faraz qilaylik, bizda quyidagi graf mavjud:
+
+mathematica
+
+    A
+   / \
+  B   C
+ / \   \
+D   E   F
+
+Bu graf uchun BFS algoritmi quyidagicha ishlaydi:
+
+    Boshlanish tuguni A tanlanadi.
+    A tuguni tekshiriladi, va B va C qo'shni tugunlari navbatga qo'shiladi.
+    B tuguni tekshiriladi, va D va E qo'shni tugunlari navbatga qo'shiladi.
+    C tuguni tekshiriladi, va F qo'shni tuguni navbatga qo'shiladi.
+    Va hokazo. Tugunlar kengaytirilgan tartibda tekshiriladi: A → B → C → D → E → F.
+
+Python Kodida BFS
+
+Quyida BFS algoritmi qanday amalga oshirilishini ko'rsatadigan kod keltirilgan:
+
+python
+
+from collections import deque
+
+class Graph:
+    def __init__(self):
+        self.adj_list = {}
+
+    def add_edge(self, u, v):
+        if u not in self.adj_list:
+            self.adj_list[u] = []
+        if v not in self.adj_list:
+            self.adj_list[v] = []
+        self.adj_list[u].append(v)
+        self.adj_list[v].append(u)  # Yo'naltirilmagan graf uchun
+
+    def bfs(self, start):
+        visited = set()  # Qo'shni tugunlarni saqlash
+        queue = deque([start])  # Tugunlarni navbatga qo'shish
+        visited.add(start)  # Boshlang'ich tugunni tashrif buyurilgan sifatida belgilash
+
+        while queue:
+            vertex = queue.popleft()  # Navbatdan tugunni olib tashlash
+            print(vertex)  # Tugunni chiqarish
+
+            for neighbor in self.adj_list[vertex]:  # Qo'shni tugunlarni ko'rish
+                if neighbor not in visited:  # Agar qo'shni tugun hali tashrif buyurilmagan bo'lsa
+                    visited.add(neighbor)  # Qo'shni tugunni tashrif buyurilgan sifatida belgilash
+                    queue.append(neighbor)  # Qo'shni tugunni navbatga qo'shish
+
+
+# Grafni yaratish
+g = Graph()
+g.add_edge('A', 'B')
+g.add_edge('A', 'C')
+g.add_edge('B', 'D')
+g.add_edge('B', 'E')
+g.add_edge('C', 'F')
+
+# BFS algoritmini ishga tushirish
+print("Breadth-First Search:")
+g.bfs('A')
+
+Algoritmning Afzalliklari va Kamchiliklari
+
+Afzalliklari:
+
+    Eng qisqa yo'lni topish uchun juda samarali, agar yo'llar og'irsiz bo'lsa.
+    Har qanday graf yoki daraxtning barcha tugunlarini tekshirish imkonini beradi.
+    Oson tushuniladigan va qo'llaniladigan struktura.
+
+Kamchiliklari:
+
+    Katta graf yoki daraxtlar uchun xotira iste'moli yuqori bo'lishi mumkin, chunki u tugunlar va qirralar soni ko'payganida navbatni saqlashi kerak.
+    Agar graf yoki daraxt chuqurligi juda katta bo'lsa, qidirish vaqtini oshirishi mumkin.
+
+Xulosa
+
+BFS algoritmi graf va daraxtlarni kengaytirish va izlash jarayonida juda foydali hisoblanadi. U ko'p hollarda eng qisqa yo'llarni topish va turli muammolarni hal qilishda qo'llaniladi. Ushbu algoritmni tushunish va qo'llash dasturchilar uchun juda muhimdir.

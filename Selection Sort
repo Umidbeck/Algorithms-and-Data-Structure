@@ -1,0 +1,87 @@
+RSelection Sort (tanlash tartibi) — bu oddiy taqsimlash algoritmlaridan biri bo'lib, o'zining sodda ishlash printsipi bilan ajralib turadi. Ushbu algoritm berilgan ro'yxatni tartiblash uchun to'g'ridan-to'g'ri eng kichik (yoki eng katta) elementni topadi va uni ro'yxatning boshiga qo'yadi. Bu jarayon ro'yxatning barcha elementlari tartiblanguncha davom etadi.
+Algoritmning ishlash printsipi
+
+    Boshlanish: Ro'yxatning boshidan boshlanadi va eng kichik elementni izlaydi.
+    Eng kichik elementni topish: Har bir bosqichda, hozirgi bosqichdan keyin eng kichik elementni toping.
+    Elementlarni almashtirish: Topilgan eng kichik elementni ro'yxatning hozirgi pozitsiyasiga (boshiga) qo'ying.
+    Keyingi bosqichga o'tish: Ro'yxatni davom ettirib, keyingi pozitsiyaga o'ting va takrorlang.
+
+Algoritmning ko'rinishi
+
+Taqsimlash jarayoni oddiy qilib ko'rsatilganda, u quyidagicha bo'ladi:
+
+    Ro'yxat: [64, 25, 12, 22, 11]
+    1-bosqich:
+        Eng kichik element: 11 (index 4)
+        Ro'yxatni almashtirish: [11, 25, 12, 22, 64]
+    2-bosqich:
+        Eng kichik element: 12 (index 2)
+        Ro'yxatni almashtirish: [11, 12, 25, 22, 64]
+    3-bosqich:
+        Eng kichik element: 22 (index 3)
+        Ro'yxatni almashtirish: [11, 12, 22, 25, 64]
+    4-bosqich:
+        Eng kichik element: 25 (index 3)
+        Ro'yxatni almashtirish: [11, 12, 22, 25, 64]
+    Natija: [11, 12, 22, 25, 64]
+
+Pseudocode
+
+Selection sort algoritmini quyidagi pseudocode ko'rinishida yozish mumkin:
+
+vbnet
+
+function selectionSort(arr):
+    n = length(arr)
+    for i from 0 to n-1:
+        minIndex = i
+        for j from i+1 to n:
+            if arr[j] < arr[minIndex]:
+                minIndex = j
+        swap(arr[i], arr[minIndex])
+    return arr
+
+Python kodi
+
+python
+
+def selection_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        min_index = i
+        for j in range(i + 1, n):
+            if arr[j] < arr[min_index]:
+                min_index = j
+        # Elementlarni almashtirish
+        arr[i], arr[min_index] = arr[min_index], arr[i]
+    return arr
+
+# Misol
+arr = [64, 25, 12, 22, 11]
+sorted_arr = selection_sort(arr)
+print(sorted_arr)  # [11, 12, 22, 25, 64]
+
+Murakkablik
+
+    Vaqt murakkabligi:
+        Eng yaxshi holatda: O(n^2)
+        O'rtacha holatda: O(n^2)
+        Eng yomon holatda: O(n^2)
+
+    Xotira murakkabligi: O(1) (almashtirishlar uchun qo'shimcha xotira ishlatilmaydi)
+
+Afzalliklari va kamchiliklari
+Afzalliklari:
+
+    Sodda va oson tushuniladi.
+    Har doim n-1 marta almashtirish amalga oshiriladi.
+    Kichik ma'lumotlar to'plamlari uchun yaxshi natija beradi.
+
+Kamchiliklari:
+
+    Katta ma'lumotlar to'plamlari uchun samarador emas.
+    Vaqt murakkabligi O(n^2) dan yuqori bo'lgan katta ro'yxatlar uchun maqbul emas.
+
+Xulosa
+
+Selection sort algoritmi oddiy bo'lib, o'zining sodda ishlash printsipi bilan ajralib turadi. U kichik o'lchamdagi ma'lumotlar uchun juda mos keladi, lekin katta o'lchamdagi ma'lumotlar bilan ishlaganda boshqa samarali tartiblash algoritmlarini ko'rib chiqish tavsiya etiladi.

@@ -1,0 +1,109 @@
+Bubble Sort
+
+Bubble Sort — bu oddiy va eng asosiy saralash algoritmlaridan biri bo'lib, u ro'yxatdagi elementlarni o'zaro taqqoslash va joylarini almashtirish orqali saralaydi. Ushbu algoritmning nomi "bubble" (shishiruvchi) deb ataladi, chunki saralash jarayonida eng katta elementlar "shishiradi" va ro'yxatning yuqori qismiga ko'tariladi.
+Algoritmning Ishlash Printsipi
+
+    Taqqoslash: Ro'yxatning har bir juft qo'shni elementlarini taqqoslang. Agar birinchi element ikkinchisidan katta bo'lsa, ularni joylarini almashtiring.
+
+    Takrorlash: Birinchi qadamni ro'yxatning oxirigacha davom ettiring. Barcha juft elementlarni taqqoslaganingizda, eng katta element ro'yxatning oxirida joylashadi.
+
+    Qayta takrorlash: Ushbu jarayonni ro'yxatning qolgan qismlarida (oxirgi joylashgan elementni e'tiborsiz qoldirib) takrorlang.
+
+    Tugash: Agar hech qanday almashtirish amalga oshirilmasa, saralash tugaydi.
+
+Python Kodida Bubble Sort
+
+python
+
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        swapped = False  # Almashtirishni nazorat qilish
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:  # Taqqoslash
+                arr[j], arr[j+1] = arr[j+1], arr[j]  # Joy almashtirish
+                swapped = True
+        if not swapped:  # Agar almashtirish bo'lmasa, saralash tugadi
+            break
+    return arr
+
+# Misol
+arr = [64, 34, 25, 12, 22, 11, 90]
+sorted_arr = bubble_sort(arr)
+print(sorted_arr)  # Natija: [11, 12, 22, 25, 34, 64, 90]
+
+Afzalliklari
+
+    Oddiy tushunish va amalga oshirish.
+    Kichik ma'lumotlar to'plamlari uchun yaxshi ishlaydi.
+
+Kamchiliklari
+
+    O'rtacha va eng yomon holatda ishlash vaqti O(n^2).
+    Katta ma'lumotlar to'plamlari uchun samarali emas.
+
+Merge Sort
+
+Merge Sort — bu bo'linish va birlashtirish (divide and conquer) prinsipiga asoslangan saralash algoritmi. Bu algoritm ro'yxatni ikki qismga bo'lish va har bir qismni alohida saralab, keyin ularni birlashtirish orqali ishlaydi.
+Algoritmning Ishlash Printsipi
+
+    Bo'lish: Ro'yxatni o'rtasidan ikki qismga bo'ling. Agar ro'yxat bir elementdan iborat bo'lsa, u allaqachon saralangan hisoblanadi.
+
+    Rekursiv saralash: Har bir qism uchun Merge Sort algoritmini qayta chaqiring.
+
+    Birlashtirish: Saralangan ikkita qismni birlashtiring, bu jarayonda har bir elementni taqqoslab, yangi ro'yxatga joylashtirasiz.
+
+Python Kodida Merge Sort
+
+python
+
+def merge_sort(arr):
+    if len(arr) <= 1:  # Bitta yoki bo'sh ro'yxat
+        return arr
+
+    mid = len(arr) // 2  # O'rta indeks
+    left_half = merge_sort(arr[:mid])  # Chap qism
+    right_half = merge_sort(arr[mid:])  # O'ng qism
+
+    return merge(left_half, right_half)  # Birlashtirish
+
+def merge(left, right):
+    result = []
+    i = j = 0
+
+    # Ikkita qismni birlashtirish
+    while i < len(left) and j < len(right):
+        if left[i] < right[j]:
+            result.append(left[i])
+            i += 1
+        else:
+            result.append(right[j])
+            j += 1
+
+    # Qolgan elementlarni qo'shish
+    result.extend(left[i:])
+    result.extend(right[j:])
+    
+    return result
+
+# Misol
+arr = [38, 27, 43, 3, 9, 82, 10]
+sorted_arr = merge_sort(arr)
+print(sorted_arr)  # Natija: [3, 9, 10, 27, 38, 43, 82]
+
+Afzalliklari
+
+    O'rtacha va eng yomon holatda ishlash vaqti O(n log n).
+    Katta ma'lumotlar to'plamlari uchun yaxshi ishlaydi.
+    Stabil saralash algoritmi (bir xil qiymatdagi elementlar tartibini saqlaydi).
+
+Kamchiliklari
+
+    Qo'shimcha xotira sarfi: Merge Sortda saralash jarayonida qo'shimcha xotira talab etiladi, bu esa xotira foydalanishini oshiradi.
+
+Xulosa
+
+    Bubble Sort — oddiy, lekin samarali bo'lmagan va kichik ma'lumotlar to'plamlari uchun qulay.
+    Merge Sort — samarali, xotira talab qiluvchi va katta ma'lumotlar bilan yaxshi ishlovchi saralash algoritmi.
+
+Ikkala algoritm ham saralash jarayonini tushunishga yordam beradi va dasturchilar tomonidan keng qo'llaniladi.

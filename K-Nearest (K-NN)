@@ -1,0 +1,77 @@
+K-Nearest Neighbors (K-NN) — bu oddiy va intuitiv klassifikatsiya algoritmi bo'lib, u ko'pincha ma'lumotlarni tasniflash va regressiya uchun qo'llaniladi. K-NN algoritmi yangi namunani tasniflash uchun ma'lumotlar to'plamidagi yaqin qo'shnilarini ko'rib chiqadi. K-NN algoritmining asosiy tamoyillari quyidagilar:
+Asosiy Tamoyillar
+
+    K-ni Tanlash:
+        K - yaqin qo'shnilar sonini anglatadi. K ning qiymati odatda butun son bo'lib, 1 dan 10 gacha bo'lishi mumkin.
+        K ning kichik qiymatlari (masalan, K=1) modelni ortiqcha moslashuvga olib kelishi mumkin, ya'ni yangi ma'lumotlarni klassifikatsiya qilishda yuqori noaniqlik.
+        K ning katta qiymatlari esa modelni ko'proq umumlashtiradi, lekin ba'zan muhim detallarni yo'qotishi mumkin.
+
+    Masofani Hisoblash:
+        K-NN algoritmi, ko'pincha, turli masofa o'lchovlarini (masalan, Evklid masofasi, Manhattan masofasi) ishlatadi. Masofa yordamida yangi nuqtani yaqin qo'shnilar bilan solishtiradi.
+
+    Klassifikatsiya:
+        Har bir qo'shni nuqtaning tasnifi hisoblanadi va yangi nuqtaning klassifikatsiyasi, eng ko'p uchraydigan klassga asoslanadi (ya'ni, eng ko'p ovoz berish).
+
+Algoritmning Qadamlar
+
+    Ma'lumotlarni tayyorlash:
+        K-NN algoritmi uchun ma'lumotlar tayyorlanishi kerak. Ma'lumotlar o'zaro solishtiriladi.
+
+    Masofani hisoblash:
+        Har bir o'quv nuqtasi uchun yangi nuqtaga bo'lgan masofa hisoblanadi.
+
+    Yaqin qo'shnilarni tanlash:
+        K ta eng yaqin qo'shnini tanlang.
+
+    Ovoz berish:
+        K ta qo'shnidan eng ko'p uchraydigan klassni aniqlang.
+
+    Natijani chiqarish:
+        Yangi nuqtaning klassi qaytariladi.
+
+K-NN Algoritmining Afzalliklari
+
+    Soddaligi: K-NN juda sodda va intuitiv. Uni o'rganish va qo'llash oson.
+    Noformallik: K-NN ma'lumotlar taqsimotiga yoki modellariga talab qo'ymaydi, shuning uchun ma'lumotlar ustida hech qanday farazlar qilmaslik mumkin.
+    Oson Moslashtirish: K-NN juda ko'p klassifikatsiya masalalarini hal qilish uchun ishlatilishi mumkin.
+
+K-NN Algoritmining Kamchiliklari
+
+    Hisoblash xarajatlari: K-NN har bir yangi nuqta uchun barcha o'quv nuqtalarini ko'rib chiqishi kerak, bu esa ko'p ma'lumotlar bilan ishlaganda sekin ishlashga olib kelishi mumkin.
+    O'lchovlar balansi: O'lchovlarning ko'pligi "o'lchovlar qiyinligi" muammosiga olib kelishi mumkin, bu esa ma'lumotlarning zichligini kamaytiradi va modelni noto'g'ri ishlashiga olib keladi.
+    Shovqin: Agar shovqinli yoki noaniq ma'lumotlar mavjud bo'lsa, K-NN yomon natijalar ko'rsatishi mumkin.
+
+K-NN Misoli
+
+Quyida K-NN algoritmining Python yordamida qanday ishlashini ko'rsatadigan oddiy misol keltirilgan:
+
+python
+
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+
+# Ma'lumotlarni yuklash
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Ma'lumotlarni o'qitish va sinov to'plamlariga bo'lish
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# K-NN modelini yaratish
+k = 3
+knn = KNeighborsClassifier(n_neighbors=k)
+
+# Modelni o'qitish
+knn.fit(X_train, y_train)
+
+# Bashorat qilish
+predictions = knn.predict(X_test)
+
+# Natijalarni chiqarish
+print("Bashoratlar:", predictions)
+
+Xulosa
+
+K-Nearest Neighbors (K-NN) oddiy, lekin kuchli klassifikatsiya algoritmi bo'lib, ko'plab amaliyotlarda foydalaniladi. Uning afzalliklari va kamchiliklari mavjud, shuning uchun uni foydalanishdan oldin vaziyatni yaxshilab o'rganish muhimdir. K-NNning osonligini va intuitivligini hisobga olgan holda, u ko'plab dasturlarda foydalidir.

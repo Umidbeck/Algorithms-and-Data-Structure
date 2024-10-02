@@ -1,0 +1,73 @@
+Hash Table (Xesh Jadvali)
+
+Hash table — bu ma'lumotlar tuzilmasi bo'lib, u ma'lumotlarni kalit (key) va qiymat (value) juftliklari shaklida saqlaydi. Hash table ma'lumotlarni tezda izlash, qo'shish va o'chirish imkoniyatini ta'minlaydi, bu esa uni keng tarqalgan va samarali ma'lumotlar tuzilmasi qiladi.
+Asosiy Tushunchalar
+
+    Kalit (Key): Har bir qiymatni saqlash uchun ishlatiladigan noyob identifikator. Kalit yordamida qiymatga tezda kirish mumkin.
+
+    Xesh Funksiyasi (Hash Function): Kalitni xesh kodiga aylantiruvchi funksiyadir. Xesh kodi kalitni xarakterlaydigan raqamli qiymatdir. Xesh funksiyasi qanchalik yaxshi ishlasa, hash table shuncha samarali ishlaydi.
+
+    Xesh Kod (Hash Code): Kalitning xesh funksiyasi orqali olingan raqamli qiymati. Xesh kodining o'lchami odatda hash tablening o'lchamidan kichik bo'lishi kerak.
+
+    Kolliziyalar (Collisions): Agar ikkita yoki undan ortiq kalit bir xil xesh kodiga ega bo'lsa, bu kolliziya deb ataladi. Bunday holatni boshqarish uchun har xil usullar mavjud.
+
+Hash Tablening Ishlash Printsipi
+
+    Qo'shish (Insertion):
+        Kalitning xesh kodini hisoblang.
+        Xesh kodni hash tabledagi mos indeksga joylashtiring.
+        Agar o'sha indeksda boshqa kalit bo'lsa (kolliziya), kolliziyani hal qilish usulini qo'llang.
+
+    Izlash (Searching):
+        Kalitning xesh kodini hisoblang.
+        O'sha xesh kodga mos indeksdan qiymatni qidiring.
+        Agar kerakli kalit topilmasa, natija mavjud emas deb e'lon qilinadi.
+
+    O'chirish (Deletion):
+        Kalitning xesh kodini hisoblang.
+        O'sha xesh kodga mos indeksda kalitni o'chiring.
+
+Kolliziyalarni Hal qilish Usullari
+
+    Zanjir Usuli (Chaining):
+        Har bir indeksda kalit-qiymat juftliklari uchun ro'yxat saqlanadi. Agar yangi kalit o'sha indeksda joylansa, uni ro'yxatga qo'shiladi.
+
+    O'zgartirish (Open Addressing):
+        Agar indeks band bo'lsa, xesh kodni qayta hisoblab, keyingi bo'sh indeksni izlang. Buning bir necha usullari mavjud, masalan, liniyali probing, kvadrat probing va boshqalar.
+
+Afzalliklari
+
+    Tezlik: Ma'lumotlarni qo'shish, o'chirish va izlash operatsiyalari O(1) vaqt murakkabligiga ega.
+    Moslashuvchanlik: Xesh jadvali hajmi o'zgartirilishi mumkin, bu esa ma'lumotlar soni oshganda ham samarali ishlash imkonini beradi.
+
+Kamchiliklari
+
+    Kolliziyalar: Xesh funktsiyasi yaxshi ishlamasligi yoki ma'lumotlar juda yuqori darajada takrorlansa, kolliziyalar ko'p bo'lishi mumkin.
+    Xotira Sarfi: Hash table ma'lum bir xesh funksiyasiga asoslangan holda bo'sh joylar saqlashi mumkin, bu esa xotira sarfini oshiradi.
+    Murakkablik: Hash funktsiyasini tanlash va kolliziyalarni hal qilish usullarini qo'llashda murakkabliklar paydo bo'lishi mumkin.
+
+Python Kodida Hash Table
+
+Python dasturlash tilida hash tableni amalga oshirish juda oddiy, chunki Pythonning standart kutubxonasi "dictionary" (lug'at) ma'lumotlar turini o'z ichiga oladi, bu esa hash table sifatida ishlaydi.
+
+python
+
+# Hash Table misoli
+hash_table = {}
+
+# Qo'shish
+hash_table["kalit1"] = "qiymat1"
+hash_table["kalit2"] = "qiymat2"
+
+# Izlash
+print(hash_table["kalit1"])  # Natija: qiymat1
+
+# O'chirish
+del hash_table["kalit2"]
+
+# O'rin tekshirish
+print("kalit2" in hash_table)  # Natija: False
+
+Xulosa
+
+Hash table — bu tez ma'lumotlar izlash va saqlash uchun qulay ma'lumotlar tuzilmasi. Uning samaradorligi kalitning xesh funksiyasiga va kolliziyalarni hal qilish usullariga bog'liq. U ko'plab dasturlash tili va ma'lumotlar bazalarida keng qo'llaniladi.

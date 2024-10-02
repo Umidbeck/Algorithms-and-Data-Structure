@@ -1,0 +1,123 @@
+Linked List (bog'langan ro'yxat) — bu ma'lumotlarni saqlash uchun ishlatiladigan ma'lumotlar tuzilmasi bo'lib, unda elementlar (nodo) bir-biriga bog'langan holda joylashgan. Har bir element o'z qiymatini va keyingi elementning manzilini saqlaydi. Bu tuzilma ma'lumotlarni dinamik ravishda boshqarishga imkon beradi.
+Asosiy xususiyatlar
+
+    Dinamik o'lchov: Linked listning o'lchami dastlabki o'lchamiga bog'liq emas; yangi elementlar qo'shish yoki mavjudlarini o'chirishda o'lchami o'zgarishi mumkin.
+
+    Ma'lumotlarga kirish: Linked listda elementlarga kirish O(n) vaqt ichida amalga oshiriladi, chunki har bir elementga kirish uchun ro'yxatni birma-bir ko'rib chiqish kerak.
+
+    Elementlar: Har bir element (nodo) ikkita qismdan iborat: qiymat (data) va keyingi elementga (next) ko'rsatkich.
+
+Linked List turlari
+
+    Singly Linked List (bir tomonlama bog'langan ro'yxat):
+        Har bir nodo faqat keyingi nodo manzilini saqlaydi.
+        Yozilish tartibi: data, next
+
+    Misol:
+
+    rust
+
+A -> B -> C -> D -> NULL
+
+Doubly Linked List (ikki tomonlama bog'langan ro'yxat):
+
+    Har bir nodo o'zidan oldingi va keyingi nodolar manzillarini saqlaydi.
+    Yozilish tartibi: prev, data, next
+
+Misol:
+
+rust
+
+NULL <- A <-> B <-> C <-> D -> NULL
+
+Circular Linked List (aylanma bog'langan ro'yxat):
+
+    Yakuniy nodo keyingi ko'rsatkichini birinchi nodoga bog'laydi.
+    Bu turda, ro'yxatning oxiriga yetganda, ro'yxat qaytadan boshlanishi mumkin.
+
+Misol:
+
+markdown
+
+    A -> B -> C -> D
+    ^               |
+    |_______________|
+
+Linked List bilan ishlash
+1. Element qo'shish
+
+Elementni ro'yxatga qo'shish uchun yangi nodo yaratib, uni kerakli joyga bog'lash kerak.
+
+python
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def append(self, data):
+        new_node = Node(data)
+        if not self.head:
+            self.head = new_node
+            return
+        last = self.head
+        while last.next:
+            last = last.next
+        last.next = new_node
+
+2. Element o'chirish
+
+Linked listdan element o'chirishda o'zaro bog'lanishni o'zgartirish kerak.
+
+python
+
+def delete_node(self, key):
+    temp = self.head
+    if temp and temp.data == key:
+        self.head = temp.next
+        temp = None
+        return
+    while temp and temp.data != key:
+        prev = temp
+        temp = temp.next
+    if temp is None:
+        return
+    prev.next = temp.next
+    temp = None
+
+3. Elementlarga kirish
+
+Elementlarga kirish uchun bog'langan ro'yxatni boshidan boshlab, har bir elementni tekshirib chiqamiz.
+
+python
+
+def print_list(self):
+    temp = self.head
+    while temp:
+        print(temp.data, end=" -> ")
+        temp = temp.next
+    print("NULL")
+
+Linked Listning afzalliklari
+
+    Dinamik xotira boshqaruvi: Linked listlar xotira joyini samarali ishlatadi, chunki ularda o'lchamni oldindan belgilash shart emas.
+
+    Elementlarni qo'shish va o'chirish: Ma'lumotlarni qo'shish va o'chirish operatsiyalari O(1) vaqt ichida amalga oshiriladi, agar tugunlarni o'zaro bog'lash uchun kerakli ko'rsatkichlarga ega bo'lsak.
+
+Linked Listning kamchiliklari
+
+    Ma'lumotlarga kirish tezligi: Har bir elementga kirish O(n) vaqt ichida amalga oshiriladi, chunki ro'yxatni birma-bir ko'rib chiqish kerak.
+
+    Qo'shimcha xotira sarfi: Har bir nodo qo'shimcha xotira talab qiladi, bu esa ma'lumotlar tuzilmasining umumiy xotira iste'molini oshiradi.
+
+    Qaytish (traversal): Linked listda ma'lumotlar o'qish jarayonida qo'shimcha qiyinchiliklar yuzaga kelishi mumkin.
+
+Xulosa
+
+Linked listlar dasturlashda ma'lumotlarni saqlash va boshqarish uchun muhim va samarali tuzilma hisoblanadi. Ularning afzalliklari va kamchiliklarini hisobga olib, konkret vazifalar uchun mos keladigan ma'lumotlar tuzilmasini tanlash muhimdir. Linked listlar ko'plab algoritmlarda va ma'lumotlar tuzilmalarida ishlatiladi, shu jumladan, staklar, navbatlar va graflar.
+
+

@@ -1,0 +1,90 @@
+ChatGPT said:
+ChatGPT
+
+Binary Search (Binar qidiruv) — bu tartiblangan ma'lumotlar to'plamida ma'lum bir qiymatni topish uchun ishlatiladigan samarali qidiruv algoritmidir. U ma'lumotlar to'plamini ikki qismga bo'lib, har bir bosqichda qidirilayotgan qiymatni topish uchun izlanayotgan qismni qisqartiradi. Bu algoritm juda samarali va katta ma'lumotlar to'plamlarida tezda natijaga erishishga yordam beradi.
+Algoritmning asosiy xususiyatlari:
+
+    Tartiblangan to'plamda ishlaydi: Binar qidiruv faqat tartiblangan ma'lumotlar to'plamida amalga oshiriladi. Agar to'plam tartiblangan bo'lmasa, avval uni tartiblash kerak.
+
+    Samaradorligi: Har bir qadamda qidirilayotgan ma'lumotlar to'plami ikki baravar kamayadi, shuning uchun binar qidiruv juda tez ishlaydi.
+
+Algoritm qanday ishlaydi?
+
+    Ma'lumotlar to'plamini tartiblangan holda qabul qilish.
+    Boshlanish va oxirgi indekslarni belgilash (left va right).
+    O'rta elementni topish:
+        O'rta indeks: mid = (left + right) // 2
+        Agar o'rta element qidirilayotgan qiymatga teng bo'lsa, u holda o'rta indeks qaytariladi.
+        Agar o'rta element qidirilayotgan qiymatdan kichik bo'lsa, left indeksini mid + 1 ga o'zgartiring.
+        Agar o'rta element qidirilayotgan qiymatdan katta bo'lsa, right indeksini mid - 1 ga o'zgartiring.
+    Agar left indeks right indeksdan katta bo'lsa, qidiruv tugaydi va -1 (topilmaganligini bildiruvchi qiymat) qaytariladi.
+
+Algoritmning murakkabligi:
+
+    Vaqt murakkabligi: O(log n), bu yerda n — ma'lumotlar to'plamidagi elementlar soni. Bu degani, ma'lumotlar to'plamidagi har bir qadamda qidirilayotgan qiymatni izlash uchun qadamlar soni logarifmga teng bo'ladi.
+    Xotira murakkabligi: O(1) — agar iterativ usulda ishlatilsa, faqat bir necha o'zgaruvchilarni saqlaydi; O(log n) — agar rekursiv usulda ishlatilsa, chaqiruv stacki uchun.
+
+Psevdo-kod:
+
+Binar qidiruvni ifodalovchi psevdo-kod quyidagicha ko'rinadi:
+
+plaintext
+
+function binarySearch(array, target):
+    left = 0
+    right = length(array) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+        if array[mid] == target:
+            return mid  // topildi
+        else if array[mid] < target:
+            left = mid + 1  // o'ng qismga o'ting
+        else:
+            right = mid - 1  // chap qismga o'ting
+
+    return -1  // topilmadi
+
+Python misoli:
+
+Quyida binar qidiruv algoritmini Python dasturlash tilida ko'rsatadigan misol keltirilgan:
+
+python
+
+def binary_search(arr, target):
+    left, right = 0, len(arr) - 1
+
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] == target:
+            return mid  # topildi
+        elif arr[mid] < target:
+            left = mid + 1  # o'ng qismga o'tish
+        else:
+            right = mid - 1  # chap qismga o'tish
+
+    return -1  # topilmadi
+
+# Misol
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+target_number = 7
+result = binary_search(numbers, target_number)
+
+if result != -1:
+    print(f"{target_number} raqami {result}-indeksta topildi.")
+else:
+    print(f"{target_number} raqami topilmadi.")
+
+Afzalliklari:
+
+    Samaradorlik: Katta ma'lumotlar to'plamlarida juda tez ishlaydi, qidiruv vaqtini sezilarli darajada qisqartiradi.
+    Oddiylik: Algoritmning ishlashi juda oddiy va tushunish oson.
+
+Kamchiliklari:
+
+    Tartiblangan to'plamga muhtojlik: Binar qidiruv faqat tartiblangan to'plamlar bilan ishlaydi, shuning uchun tartiblash xarajatlari mavjud bo'lishi mumkin.
+    Statik to'plamlar uchun yaxshi: Dinamik to'plamlar (ya'ni, ko'p o'zgaruvchan ma'lumotlar) uchun muntazam ravishda tartiblash zarurati bo'lishi mumkin, bu esa samaradorlikni pasaytiradi.
+
+Xulosa:
+
+Binar qidiruv algoritmi juda samarali va katta tartiblangan ma'lumotlar to'plamlarida qidiruv jarayonini tezlashtirishda qo'llaniladi. Bu algoritmni o'rganish va qo'llash dasturchilar uchun muhim hisoblanadi.

@@ -1,0 +1,74 @@
+Dynamic Programming (DP) — bu muammolarni yechishda qiyinchilikni kamaytirish va samaradorlikni oshirish uchun ishlatiladigan metod. U odatda muammolarni kichik, o'zaro bog'liq sub-muammolarga ajratish va ularni hal qilishda, so'ngra bu yechimlarni birlashtirib, umumiy yechim olish jarayonida qo'llaniladi. DP ikki asosiy tamoyilga asoslanadi:
+
+    Optimal substructure: Muammo yechimi sub-muammolar yechimlari orqali aniqlanadi.
+    Overlapping subproblems: Katta muammoni hal qilishda ko'p marta bir xil sub-muammolarni hal qilish zaruriyati.
+
+Dynamic Programming Asosiy Konsepsiyalari
+
+    Memoization:
+        Bu yondashuvda, har bir sub-muammo natijasi hisoblanganidan so'ng, u saqlanadi va kelajakda shu natijadan foydalaniladi.
+        Memoization odatda rekursiv yondashuvda qo'llaniladi.
+
+    Tabulation:
+        Bu yondashuvda, muammo yechimi jadvalda saqlanadi va odatda iterativ yondashuvda amalga oshiriladi.
+        Har bir sub-muammo yechimi hisoblanadi va bu yechimlar keyingi yechimlarni hisoblashda qo'llaniladi.
+
+Dynamic Programming Misollari
+
+Quyida DP ning ikkita mashhur misolini ko'rsataman:
+1. Fibonacci Sonlari
+
+Fibonacci sonlari klassik DP misoli hisoblanadi, bu erda har bir son oldingi ikkita sonning yig'indisi sifatida aniqlanadi.
+
+python
+
+def fibonacci(n):
+    dp = [0] * (n + 1)
+    dp[1] = 1
+
+    for i in range(2, n + 1):
+        dp[i] = dp[i - 1] + dp[i - 2]
+    
+    return dp[n]
+
+print(fibonacci(10))  # Natija: 55
+
+2. 0/1 Knapsack Masalasi
+
+Bu masalada berilgan vazn va qiymatga ega ob'ektlarni bir sumkaga joylashtirish kerak, shunda sumkaning maksimal og'irligi belgilangan.
+
+python
+
+def knapsack(weights, values, capacity):
+    n = len(values)
+    dp = [[0] * (capacity + 1) for _ in range(n + 1)]
+
+    for i in range(1, n + 1):
+        for w in range(1, capacity + 1):
+            if weights[i - 1] <= w:
+                dp[i][w] = max(dp[i - 1][w], dp[i - 1][w - weights[i - 1]] + values[i - 1])
+            else:
+                dp[i][w] = dp[i - 1][w]
+
+    return dp[n][capacity]
+
+weights = [1, 2, 3]
+values = [10, 15, 40]
+capacity = 6
+print(knapsack(weights, values, capacity))  # Natija: 55
+
+Dynamic Programming Asosiy Bosqichlari
+
+    Muammo formulasi: Muammo nima, qanday yechim kerak.
+    Sub-muammolarni aniqlash: Qanday qilib muammoni kichik bo'laklarga ajratish mumkin.
+    Yechimlarni saqlash: Har bir sub-muammo yechimini qanday saqlash kerak.
+    Yechimni birlashtirish: Qanday qilib sub-muammolar yechimini umumiy yechimga aylantirish.
+
+Dynamic Programmingning Afzalliklari
+
+    Samaradorlik: DP yechimi ko'pincha eksponensial yondashuvga qaraganda tezroq bo'ladi, chunki bir xil sub-muammolarni bir necha marta hisoblash o'rniga, ularni bir marta hisoblaydi.
+    Flexibility: DP turli xil muammolarni hal qilishda ishlatilishi mumkin, masalan, yo'lni topish, optimallashtirish, kombinatika va boshqalar.
+
+Xulosa
+
+Dynamic Programming dasturlash muammolarini yechishda kuchli yondashuvdir. U optimal yechimlarni topish uchun kuchli metodologiya va qat'iy fikrlashni talab qiladi. Buni qo'llash orqali ko'plab qiyin muammolarni samarali hal qilish mumkin. DPni o'rganish va qo'llash sizga algoritmlar va ma'lumotlar tuzilmalarini yanada chuqurroq tushunishga yordam beradi.

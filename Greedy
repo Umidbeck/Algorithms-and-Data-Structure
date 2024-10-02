@@ -1,0 +1,127 @@
+Greedy Algoritmlari
+
+Greedy algoritmlari (ishlatish) — bu muammoni hal qilish uchun har bir bosqichda eng yaxshi yoki eng optimal yechimni tanlaydigan yondashuvdir. Bu algoritmlar bir vaqtning o'zida eng yaxshi ko'rinayotgan yechimni tanlaydi, shuning uchun ular har bir qadamda lokal optimal yechimga erishishga intiladi. Ushbu usul, odatda, muammo global optimal yechimga olib kelmasa-da, ko'plab muammolar uchun qoniqarli natijalarga olib kelishi mumkin.
+Asosiy Xususiyatlari
+
+    Qadamlar bo'yicha yechim: Greedy algoritmlari har bir qadamda eng yaxshi ko'rinayotgan tanlovni amalga oshiradi.
+    Lokal optimal: Har bir tanlov lokal optimal bo'lishi mumkin, lekin bu har doim global optimal yechimni kafolatlamaydi.
+    Qisqa davomiylik: Greedy algoritmlari odatda, sodda va samarali bo'lib, ko'p vaqt sarflamaydi.
+
+Greedy Algoritmlarining Ishlash Jarayoni
+
+    Muammoni tahlil qilish: Muammoning strukturasini va talablari bilan tanishish.
+    Tanlovlar qilish: Har bir qadamda eng yaxshi yoki eng optimal ko'rinadigan tanlovni amalga oshirish.
+    Qayta ishlash: Tanlangan yechimni davom ettirish va keyingi qadamga o'tish.
+    Yakuniy yechim: Jarayon tugagach, natijani olish.
+
+Greedy Algoritmlarining Misollari
+
+    Maksimal Qo'shish: Bir necha turli ranglar yoki bir xil narsalardan eng ko'p qo'shish.
+    Minimali Yuzlasha: Muammoning minimal yoki eng arzon yechimni topish.
+    Tugmalarning qoplamasi (Coin Change Problem): Berilgan tanga yig'indisini eng kam tanga bilan to'lash.
+
+Misol: Coin Change Problem
+
+Tanga muammosi, berilgan bir qiymatni to'lash uchun eng kam tanga sonini topish muammosidir. Masalan, sizda 1, 5 va 10 dollar tangalar bor va siz 18 dollar to'lashni xohlaysiz.
+
+    Eng katta tanga (10 dollar) ni tanlang.
+    Keyin yana 5 dollar tangani tanlang.
+    So'ngra 1 dollar tangalarini qo'shing (ikki 1 dollar).
+
+Natijada, siz 3 ta tanga (10, 5, 1, 1) bilan 18 dollar to'lashingiz mumkin. Bu natijani olish uchun eng optimal yechim bo'ladi.
+Greedy Algoritmlarining Kamchiliklari
+
+    Global optimal yechimni kafolatlamaydi: Har doim eng yaxshi ko'rinayotgan yechim global optimal yechimni bermaydi.
+    Qiyin muammolar: Ba'zi muammolar, masalan, "Traveling Salesman Problem", greedy algoritmlar orqali hal qilinmaydi.
+
+Greedy Algoritmlari uchun Qo'llaniladigan Shartlar
+
+Greedy algoritmlari muammoni hal qilishda yaxshi ishlaydi, agar quyidagi shartlar bajarilsa:
+
+    Optimal Substructure: Agar muammo optimal substructure ga ega bo'lsa, ya'ni muammo yechimi o'z ichiga olishgan optimal yechimlardan tashkil topgan bo'lsa.
+    Greedy Choice Property: Har bir lokal tanlov global optimal yechimga olib kelishi kerak.
+
+Greedy Algoritmlarining Turi
+
+    Tugunlarga asoslangan: Har bir tugunlar o'rtasida minimal masofa yoki maksimal foyda.
+    Tanga muammolari: Eng kam tanga sonini topish.
+    Jadval muammolari: Belgilangan resurslardan eng yaxshi foydalanish.
+
+Xulosa
+
+Greedy algoritmlari ko'plab muammolarni hal qilishda tez va samarali yechimlar taklif qiladi. Ular oddiyligi, tezligi va foydali natijalari bilan mashhur, lekin ba'zi muammolar uchun global optimal yechimni berolmasligi mumkin. Ushbu yondashuvni o'rganish va uning imkoniyatlarini tushunish dasturchilar uchun muhim ko'nikmalardan biridir.Greedy algoritmini amalga oshirish uchun kod misollari beray. Quyida "Coin Change Problem" muammosi uchun greedy yondashuvi bilan yechim keltiraman.
+Coin Change Problem
+
+Ushbu masalada berilgan summani to'lash uchun eng kam tanga sonini topish kerak. Tangalar sifatida 1, 5 va 10 dollar bo'lsin.
+Python Kodingiz
+
+python
+
+def min_coins(coins, amount):
+    # Tangalar ro'yxatini saralash (katta tangadan kichik tangaga)
+    coins.sort(reverse=True)
+    
+    # To'lanishi kerak bo'lgan summani saqlash
+    count = 0
+
+    # Har bir tanga uchun, eng katta tangadan boshlaymiz
+    for coin in coins:
+        while amount >= coin:
+            amount -= coin  # Tanganing qiymatini kamaytiramiz
+            count += 1      # Tanga hisobini oshiramiz
+
+    return count
+
+# Tangalar va to'lanishi kerak bo'lgan summani belgilash
+coins = [1, 5, 10]
+amount = 18
+result = min_coins(coins, amount)
+
+print(f"Eng kam tanga soni: {result}")  # Natijani chiqaramiz
+
+Kodning Ishlash Jarayoni
+
+    Tangalarni Saralash: Tangalar ro'yxatini katta tangadan kichik tangaga saralaymiz.
+    Summa uchun Tanga Tanlash: Har bir tanga uchun, qachonki to'lanishi kerak bo'lgan summa tanga qiymatidan katta yoki teng bo'lsa, tangani tanlaymiz va uni summadan chiqaramiz.
+    Tanga Hisobini Oshirish: Har safar tanga tanlanganda, tanga hisobini oshiramiz.
+
+Natija
+
+Bu kodni ishga tushirganda, Eng kam tanga soni: 3 natijasi chiqadi, chunki 10 + 5 + 1 + 1 = 18.
+Greedy Algoritm Misoli
+
+Quyida Greedy algoritmini boshqa misollar bilan keltiraman, masalan, "Activity Selection Problem".
+Activity Selection Problem
+
+Berilgan faoliyatlarni (activities) maksimal sonini tanlang, har bir faoliyatning boshlanishi va tugashi bor, ularni overlap qilmasdan tanlashingiz kerak.
+
+python
+
+def activity_selection(start_times, end_times):
+    # Faoliyatlar ro'yxatini tugash vaqti bo'yicha saralash
+    activities = sorted(zip(start_times, end_times), key=lambda x: x[1])
+    
+    count = 0
+    last_end_time = 0
+    
+    for start, end in activities:
+        if start >= last_end_time:  # Agar boshlanish vaqti oldingi faoliyat tugash vaqtidan katta bo'lsa
+            count += 1
+            last_end_time = end  # O'tgan faoliyat tugash vaqtini yangilaymiz
+
+    return count
+
+# Boshlanish va tugash vaqtlarini belgilash
+start_times = [1, 3, 0, 5, 8, 5]
+end_times = [2, 4, 6, 7, 9, 9]
+
+result = activity_selection(start_times, end_times)
+
+print(f"Tanlangan faoliyatlar soni: {result}")  # Natijani chiqaramiz
+
+Natija
+
+Bu kodni ishga tushirganda, maksimal faoliyatlar sonini ko'rasiz.
+Xulosa
+
+Greedy algoritmlari juda samarali yechimlar taklif qiladi va ko'plab muammolarni hal qilishda tezkor va samarali bo'ladi. Ushbu misollar orqali greedy yondashuvning qanday ishlashini va kodda qanday amalga oshirilishini ko'rdingiz.

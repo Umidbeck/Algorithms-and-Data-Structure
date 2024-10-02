@@ -1,0 +1,76 @@
+Stack — bu ma'lumotlar tuzilmasi bo'lib, u LIFO (Last In, First Out) prinsipiga asoslangan. Bu degani, oxirgi qo'shilgan element birinchi bo'lib olib tashlanadi. Stack ma'lumotlar tuzilmasi ko'plab dasturlash tillarida, masalan, Python, Java, C++ da mavjud.
+Stackning Asosiy Amallari
+
+Stackda quyidagi asosiy amallar bajariladi:
+
+    Push: Yangi elementni stackning yuqorisiga qo'shish.
+    Pop: Stackning yuqorisidan oxirgi qo'shilgan elementni olib tashlash va uni qaytarish.
+    Peek (yoki Top): Stackning yuqorisidagi elementni qaytarish, lekin uni olib tashlamaslik.
+    IsEmpty: Stack bo'sh yoki bo'sh emasligini tekshirish.
+    Size: Stackdagi elementlar sonini qaytarish.
+
+Stackning Qoidalari
+
+    Stackda har doim oxirgi qo'shilgan element birinchi olib tashlanadi.
+    Stackning o'lchami qat'iy bo'lishi mumkin, ya'ni maksimal cheklovlar bo'lishi mumkin, lekin ko'p dasturlash tillarida stackning o'lchami faqat xotira imkoniyatlariga bog'liq.
+
+Stackni Implementatsiya Qilish
+
+Stackni ro'yxat (list) yoki bog'langan ro'yxat (linked list) yordamida amalga oshirish mumkin. Quyida Python yordamida stackni ro'yxat yordamida qanday qilib amalga oshirish mumkinligi ko'rsatilgan:
+
+python
+
+class Stack:
+    def __init__(self):
+        self.items = []  # Stackni bosh ro'yxat sifatida yaratamiz
+
+    def push(self, item):
+        self.items.append(item)  # Yangi elementni stackning yuqorisiga qo'shamiz
+
+    def pop(self):
+        if not self.is_empty():  # Agar stack bo'sh bo'lmasa
+            return self.items.pop()  # Oxirgi qo'shilgan elementni olib tashlaymiz
+        return None  # Agar stack bo'sh bo'lsa, None qaytaramiz
+
+    def peek(self):
+        if not self.is_empty():
+            return self.items[-1]  # Stackning yuqorisidagi elementni qaytaramiz
+        return None
+
+    def is_empty(self):
+        return len(self.items) == 0  # Stack bo'shligini tekshiramiz
+
+    def size(self):
+        return len(self.items)  # Stackdagi elementlar sonini qaytaramiz
+
+# Misol
+stack = Stack()
+stack.push(1)
+stack.push(2)
+stack.push(3)
+
+print(stack.pop())  # Natija: 3
+print(stack.peek())  # Natija: 2
+print(stack.size())  # Natija: 2
+
+Stackning Foydalanish Joylari
+
+    Funksional rekursiya: Stack funksiyalarni chaqirish tartibini saqlaydi, bu esa rekursiv funksiyalarni amalga oshirishda muhimdir.
+    Kompilyatorlar: Kompilyatorlar stackdan ifodalar, operatorlar va operandlar bilan ishlashda foydalanadilar.
+    Boshqa ma'lumotlar tuzilmalari: Stacklar boshqa ma'lumotlar tuzilmalari (masalan, bog'langan ro'yxatlar) uchun yordamchi tuzilmalar sifatida ishlatiladi.
+    O'yinlar va grafika: O'yinlar va grafika dasturlashda, ob'ektlarni boshqarish va muvofiqlashtirishda foydalaniladi.
+
+Stackning Afzalliklari va Kamchiliklari
+Afzalliklari:
+
+    Sodda tuzilma: Stackni tashkil qilish va ishlatish oson.
+    Yuqori samaradorlik: Push va pop operatsiyalari O(1) vaqt murakkabligiga ega.
+
+Kamchiliklari:
+
+    O'lcham cheklovlari: Stackning maksimal o'lchami mavjud bo'lishi mumkin va bu o'zgarishlardan xabardor bo'lish zarur.
+    Kirish tartibi cheklangan: Stackga kirish faqat yuqoridan amalga oshiriladi, bu esa ma'lumotlar ustida bajariladigan amallarni cheklaydi.
+
+Xulosa
+
+Stack — bu oddiy, lekin kuchli ma'lumotlar tuzilmasi bo'lib, ko'plab dasturlash masalalarida, muammolarni hal qilishda va tizim ishlashida muhim ahamiyatga ega. U LIFO tamoyiliga asoslanadi va bir nechta amallarni tez va samarali bajarishga imkon beradi.

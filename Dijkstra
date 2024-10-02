@@ -1,0 +1,91 @@
+Dijkstra Algoritmi
+
+Dijkstra algoritmi — bu yo'naltirilgan og'irlikli grafda eng qisqa yo'lni topish uchun mo'ljallangan algoritm. U 1956-yilda Edsger Dijkstra tomonidan ishlab chiqilgan va algoritmlar nazari sohasida muhim ahamiyatga ega. Dijkstra algoritmi eng qisqa yo'lni topish uchun qidiruv strategiyasini qo'llaydi va o'zining samaradorligi va oddiyligi bilan mashhur.
+Asosiy Tushunchalar
+
+    Graf: Dijkstra algoritmi yo'naltirilgan og'irlikli grafda ishlaydi, ya'ni tugunlar (vertex) va ularni bog'lovchi yo'llar (edge) og'irlik (masofa) bilan bog'langan.
+    Tugun: Grafdagi har bir nuqta.
+    Yo'l: Tugunlar orasidagi bog'lanish.
+    Og'irlik: Har bir yo'lning qiymati yoki masofasi.
+
+Algoritm Qanday Ishlaydi?
+
+Dijkstra algoritmi birinchi navbatda boshlang'ich tugunni tanlaydi va ushbu tugundan boshqa tugunlarga eng qisqa masofalarni hisoblaydi. U quyidagi qadamlarni bajaradi:
+
+    Boshlang'ich tugunning masofasini 0 ga o'rnating va boshqa tugunlarning masofasini cheksiz (∞) ga o'rnating.
+    Qayta ishlash: Hali qayta ishlanmagan tugunlardan eng qisqa masofaga ega bo'lgan tugunni tanlang.
+    Yangilash: Tanlangan tugun orqali o'tadigan yo'llarni ko'rib chiqing va masofalarni yangilang, agar yangi yo'l orqali kelgan masofa qisqaroq bo'lsa.
+    Qayta ishlash davom etadi: Hamma tugunlar qayta ishlangancha davom eting.
+
+Algoritmning Bosqichlari
+
+    Initsializatsiya:
+        Har bir tugun uchun masofani cheksiz qilib o'rnating, boshlang'ich tugunni 0 ga o'rnating.
+        Tugunlarni qayta ishlangan va qayta ishlanmagan deb belgilang.
+
+    Qayta ishlash:
+        Eng qisqa masofaga ega tugunni tanlang.
+        Tugun orqali o'tadigan barcha qo'shni tugunlarga masofalarni yangilang.
+
+    Takrorlash:
+        Hamma tugunlar qayta ishlangan bo'lgunga qadar qadamlarni takrorlang.
+
+    Natijani chiqarish:
+        Tugunlarga eng qisqa masofalarni oling.
+
+Algoritmning Vaqt Murakkabligi
+
+Dijkstra algoritmining vaqt murakkabligi grafni qanday ifodalashiga bog'liq:
+
+    Adjacency Matrix: O(n²), bu yerda n — tugunlar soni.
+    Adjacency List va Min-Heap: O((V + E) * log(V)), bu yerda V — tugunlar soni, E — yo'llar soni.
+
+Python Koda Misol
+
+python
+
+import heapq
+
+def dijkstra(graph, start):
+    # Tugunlar va ularning eng qisqa masofalari
+    distances = {vertex: float('infinity') for vertex in graph}
+    distances[start] = 0
+    priority_queue = [(0, start)]  # (masofa, tugun)
+
+    while priority_queue:
+        current_distance, current_vertex = heapq.heappop(priority_queue)
+
+        # Agar hozirgi masofa yangilanmagan bo'lsa, o'tib ketamiz
+        if current_distance > distances[current_vertex]:
+            continue
+
+        for neighbor, weight in graph[current_vertex].items():
+            distance = current_distance + weight
+
+            # Masofani yangilang
+            if distance < distances[neighbor]:
+                distances[neighbor] = distance
+                heapq.heappush(priority_queue, (distance, neighbor))
+
+    return distances
+
+# Grafni ifodalash
+graph = {
+    'A': {'B': 1, 'C': 4},
+    'B': {'A': 1, 'C': 2, 'D': 5},
+    'C': {'A': 4, 'B': 2, 'D': 1},
+    'D': {'B': 5, 'C': 1}
+}
+
+# Dijkstra algoritmini chaqirish
+shortest_paths = dijkstra(graph, 'A')
+print(shortest_paths)  # Natijalar: {'A': 0, 'B': 1, 'C': 3, 'D': 4}
+
+Dijkstra Algoritmining Cheklovlari
+
+    Dijkstra algoritmi manfiy og'irliklar bilan grafda ishlamaydi. Agar grafda manfiy og'irliklar mavjud bo'lsa, Bellman-Ford algoritmi foydalanish tavsiya etiladi.
+    Algoritmning samaradorligi grafning tuzilishi va o'lchamiga qarab o'zgaradi.
+
+Xulosa
+
+Dijkstra algoritmi yo'naltirilgan og'irlikli grafda eng qisqa yo'lni topish uchun juda samarali va tezkor usuldir. U ko'plab muammolarni hal qilishda, masalan, transport tizimlarida, xaritalar va tarmoqlarni tahlil qilishda keng qo'llaniladi. Algoritmni tushunish va undan foydalanish dasturchilar uchun muhim ko'nikmalardan biridir.

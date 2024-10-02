@@ -1,0 +1,71 @@
+Queue (Navbat) Haqida To'liq Ma'lumot
+
+Queue (Navbat) — bu ma'lumotlar tuzilmasi bo'lib, u elementlarni joylashtirish va olish jarayonida FIFO (First In, First Out) printsipiga amal qiladi. Ya'ni, navbatga birinchi bo'lib qo'shilgan element birinchi bo'lib olinadi. Queue'lar turli dasturlash vazifalarida keng qo'llaniladi, masalan, ma'lumotlarni ko'rish, muvozanatni ta'minlash va boshqalar.
+Asosiy Tushunchalar
+
+    Element: Queue ichidagi har bir individual ma'lumot.
+    Front: Queue'ning eng oldidagi element, u birinchi olinadi.
+    Rear: Queue'ning eng oxiridagi element, u oxirgi qo'shiladi.
+    Enqueue: Queue'ga yangi element qo'shish jarayoni.
+    Dequeue: Queue'dan elementni olish jarayoni.
+    IsEmpty: Queue bo'shmi yoki yo'qligini tekshirish.
+    Size: Queue ichidagi elementlar sonini hisoblash.
+
+Queue'ning Turlari
+
+    Simple Queue: Oddiy navbat, barcha elementlar FIFO printsipiga amal qiladi.
+    Circular Queue: Queue'ning oxirgi elementi navbatning birinchi elementiga bog'lanadi, bu esa xotira samaradorligini oshiradi.
+    Priority Queue: Har bir elementga ustunlik (prioritet) beriladi, shuning uchun yuqori prioritetga ega bo'lgan elementlar navbatga birinchi qo'yiladi.
+    Deque (Double-ended Queue): Elementlar navbatning ikkala tomonidan qo'shilishi va olinishi mumkin.
+
+Queue Misolida Foydalanish
+
+Queue'lar ko'pincha quyidagi vazifalarda qo'llaniladi:
+
+    Ma'lumotlarni qayta ishlashda (masalan, dasturlashdagi kodlarni tahlil qilish).
+    Foydalanuvchilar navbatda turganida (masalan, telefon markazlari yoki kassa joylari).
+    O'yinlarda va dasturlarni bajarishda jarayonlarni boshqarish.
+
+Python Kodida Queue
+
+Python tilida collections kutubxonasidagi deque yordamida queue tuzish mumkin. Quyida oddiy misol keltirilgan:
+
+python
+
+from collections import deque
+
+# Queue yaratish
+queue = deque()
+
+# Enqueue (element qo'shish)
+queue.append('A')
+queue.append('B')
+queue.append('C')
+
+print("Queue after enqueue:", queue)
+
+# Dequeue (element olish)
+removed_element = queue.popleft()
+print("Removed Element:", removed_element)
+print("Queue after dequeue:", queue)
+
+# Queue holati
+print("Is the queue empty?", len(queue) == 0)
+print("Current size of queue:", len(queue))
+
+Queue'ning Afzalliklari va Kamchiliklari
+
+Afzalliklari:
+
+    FIFO printsipi yordamida ma'lumotlarni ketma-ket va tartibli boshqarish imkonini beradi.
+    Oson va samarali tuzilma, elementlarni qo'shish va olish tezligi yuqori.
+    Turli ma'lumotlar tuzilmalari bilan birgalikda ishlash imkonini beradi.
+
+Kamchiliklari:
+
+    Queue'ning maksimal o'lchami belgilangan bo'lishi kerak (agar to'liq bo'lsa, yangi element qo'shish mumkin emas).
+    Priority Queue uchun qo'shimcha xotira va vaqt talab qilinadi.
+
+Xulosa
+
+Queue — bu muhim ma'lumotlar tuzilmasi bo'lib, ko'plab dasturlash vazifalarida keng qo'llaniladi. U navbatdagi elementlarni boshqarishda juda foydali va samarali bo'lib, dasturchilar uchun oson tushuniladigan va ishlatiladigan tuzilma hisoblanadi. Queue'larni tushunish va ulardan samarali foydalanish dasturlashda muhimdir.

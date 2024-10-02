@@ -1,0 +1,133 @@
+Graph (Graf) Haqida To'liq Ma'lumot
+
+Graf — bu ma'lumotlar tuzilmasi bo'lib, u to'plamlar va ularning o'rtasidagi bog'lanishlarni ifodalaydi. Grafdagi elementlar noktalar (vertices) yoki tugunlar (nodes) deb ataladi, va ularning o'rtasidagi bog'lanishlar qirralar (edges) deb ataladi. Grafiklar ko'plab muammolarni hal qilishda va ma'lumotlarni ifodalashda keng qo'llaniladi.
+Asosiy Tushunchalar
+
+    Tugun (Vertex): Grafdagi asosiy element, ma'lumotni ifodalaydi. Tugunlar odatda harflar yoki raqamlar bilan belgilanadi (masalan, A, B, C).
+
+    Qirra (Edge): Tugunlar o'rtasidagi bog'lanishni ifodalaydi. Qirralar yo'naltirilgan yoki yo'naltirilmagan bo'lishi mumkin.
+
+    Yo'naltirilgan Graf (Directed Graph): Har bir qirra ma'lum bir yo'nalishga ega (masalan, A → B). Bu, tugunlardan birining boshqasiga o'tish imkoniyatini ifodalaydi.
+
+    Yo'naltirilmagan Graf (Undirected Graph): Qirralar bir tomonlama emas, balki ikki tomonlama. (masalan, A — B).
+
+    Og'ir Graf (Weighted Graph): Har bir qirrada qiymat yoki og'irlik mavjud (masalan, masofa, narx). Bu qirralar bo'yicha ma'lumotlar almashish xarajatlarini ko'rsatadi.
+
+    Og'irsiz Graf (Unweighted Graph): Qirralarda hech qanday og'irlik yo'q.
+
+Graf Turlari
+
+    Siklik Graf (Cyclic Graph): O'z-o'zini bog'laydigan yo'llar mavjud.
+
+    Siklsiz Graf (Acyclic Graph): O'z-o'zini bog'laydigan yo'llar yo'q.
+
+    Boshqariladigan Graf (Directed Acyclic Graph - DAG): Yo'naltirilgan va siklsiz graf. DAG ko'plab ilovalarda, masalan, topshiriqlar va ularning bajarilish tartibida qo'llaniladi.
+
+    Kompleks Graf (Complete Graph): Har bir tugun har bir boshqa tugun bilan bog'langan.
+
+    Kruysh, Leyner, Va Sh.k. (Tree): Har bir tugun atrofida, ya'ni o'zidan faqat bir tugunga (bosh tugun) o'zaro bog'lanadi.
+
+Grafni Tasvirlash
+
+Grafni ifodalashning bir necha usuli mavjud:
+
+    Qirralar Ro'yxati (Edge List): Har bir qirra tugunlar juftligi shaklida ifodalanadi.
+
+    python
+
+edges = [(A, B), (A, C), (B, D), (C, D)]
+
+Tutashlik Matritsasi (Adjacency Matrix): Tugunlar o'rtasidagi bog'lanishlarni matritsa shaklida ifodalovchi usul. Matritsa o'lchami n × n bo'lib, n — graf tugunlari soni.
+
+python
+
+adj_matrix = [
+    [0, 1, 1, 0],
+    [1, 0, 0, 1],
+    [1, 0, 0, 1],
+    [0, 1, 1, 0]
+]
+
+Tutashlik Ro'yxati (Adjacency List): Har bir tugun uchun bog'langan tugunlar ro'yxatini ifodalaydi.
+
+python
+
+    adj_list = {
+        'A': ['B', 'C'],
+        'B': ['A', 'D'],
+        'C': ['A', 'D'],
+        'D': ['B', 'C']
+    }
+
+Grafiklarning Afzalliklari va Kamchiliklari
+
+Afzalliklari:
+
+    Ko'p turli muammolarni hal qilishda samaradorligi.
+    Tarmoq, ijtimoiy media, transport tizimlari kabi ko'plab ilovalarda qo'llanilishi.
+
+Kamchiliklari:
+
+    Murakkabliklar: Katta grafni boshqarish va tahlil qilish qiyin bo'lishi mumkin.
+    Xotira sarfi: Katta graf uchun xotira iste'moli katta bo'lishi mumkin.
+
+Grafiklar Bilan Ishlash
+
+Grafni boshqarish va unga turli algoritmlarni qo'llashda quyidagi asosiy algoritmlar mavjud:
+
+    BFS (Breadth-First Search): Tugunlar bo'ylab kengayib chiqish algoritmi. U tugunlarni qirraga qo'yadi va eng yaqin tugunlarni tekshiradi.
+
+    DFS (Depth-First Search): Tugunlar bo'ylab chuqurlikdan o’tish algoritmi. Bu algoritm bir tugunni tanlaydi va uning qo'shni tugunlarini tekshiradi.
+
+    Dijkstra Algoritmi: Og'ir grafni eng qisqa yo'lni topish uchun ishlatiladi.
+
+    Kruskal Algoritmi: Minimal bog'lovchi daraxtni topish uchun ishlatiladi.
+
+    Prim Algoritmi: Boshqa bir minimal bog'lovchi daraxtni topish uchun ishlatiladi.
+
+Python Kodida Grafni Boshqarish
+
+Quyida Python dasturlash tilida grafni tasvirlash va izlash (BFS) algoritmini qo'llash misoli keltirilgan.
+
+python
+
+class Graph:
+    def __init__(self):
+        self.adj_list = {}
+
+    def add_edge(self, u, v):
+        if u not in self.adj_list:
+            self.adj_list[u] = []
+        if v not in self.adj_list:
+            self.adj_list[v] = []
+        self.adj_list[u].append(v)
+        self.adj_list[v].append(u)  # Yo'naltirilmagan graf uchun
+
+    def bfs(self, start):
+        visited = set()
+        queue = [start]
+        visited.add(start)
+
+        while queue:
+            vertex = queue.pop(0)
+            print(vertex)
+
+            for neighbor in self.adj_list[vertex]:
+                if neighbor not in visited:
+                    visited.add(neighbor)
+                    queue.append(neighbor)
+
+
+# Grafni yaratish
+g = Graph()
+g.add_edge('A', 'B')
+g.add_edge('A', 'C')
+g.add_edge('B', 'D')
+g.add_edge('C', 'D')
+
+# BFS algoritmini ishga tushirish
+g.bfs('A')
+
+Xulosa
+
+Graf — bu ma'lumotlar tuzilmasi bo'lib, u murakkab bog'lanishlarni va tarmoq strukturalarini ifodalashda juda qulay. Grafiklar ko'plab dasturlash masalalarida va muammolarni hal qilishda keng qo'llaniladi. Ularning tushunilishi va turli algoritmlarni bilish dasturchilar uchun juda muhimdir.

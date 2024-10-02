@@ -1,0 +1,71 @@
+Rekursiya — bu bir funksiyaning o'zini chaqirishi orqali muammoni hal qilish usuli. Rekursiya, odatda, muammoni yanada kichik bo'laklarga bo'lish va har bir bo'lakni bir xil usul bilan hal qilish orqali ishlaydi. Rekursiv funksiyalarda, asosan, asosiy shart (base case) va rekursiv chaqiruv mavjud bo'ladi.
+Rekursiv funksiyaning tuzilishi
+
+Rekursiv funksiya quyidagi qismlardan iborat bo'lishi kerak:
+
+    Asosiy shart: Bu shart, rekursiyaning to'xtashi va javobni qaytarishi uchun mo'ljallangan. Agar asosiy shart bajarilsa, funksiya o'zini yana chaqirmaydi va natija qaytariladi.
+    Rekursiv chaqiruv: Bu funksiya o'zini chaqiradi, lekin kichikroq yoki oddiyroq muammo uchun. Ushbu chaqiruv asosiy shartga yetguncha davom etadi.
+
+Misol: Faktoriyel hisoblash
+
+Faktoriyelni hisoblash rekursiv misol sifatida juda mashhur. n! (n faktorial) - bu n ga teng bo'lgan barcha musbat butun sonlarning ko'paytmasidir.
+
+Matematik ko'rinish:
+
+    n! = n * (n - 1)!, agar n > 0 bo'lsa
+    0! = 1 (asosiys hart)
+
+Rekursiv funksiya quyidagicha ko'rinadi:
+
+python
+
+def factorial(n):
+    # Asosiy shart
+    if n == 0:
+        return 1
+    else:
+        # Rekursiv chaqiruv
+        return n * factorial(n - 1)
+
+# Misol
+print(factorial(5))  # Natija: 120
+
+Rekursiya misollari
+
+    Fibonacci qatorini hisoblash: Fibonacci qatoridagi har bir raqam oldingi ikkita raqamning yig'indisi hisoblanadi. Shunday qilib:
+        F(0) = 0
+        F(1) = 1
+        F(n) = F(n - 1) + F(n - 2) agar n > 1.
+
+    Rekursiv funktsiya:
+
+    python
+
+    def fibonacci(n):
+        if n == 0:
+            return 0
+        elif n == 1:
+            return 1
+        else:
+            return fibonacci(n - 1) + fibonacci(n - 2)
+
+    # Misol
+    print(fibonacci(6))  # Natija: 8
+
+    Rekursiv kashf qilish (Backtracking): Rekursiya ko'plab algoritmlar va muammolarni hal qilishda, masalan, yo'llarni qidirish, labirintni o'rganish, kombinatsiyalar va permutatsiyalarni topishda keng qo'llaniladi.
+
+Rekursiya afzalliklari va kamchiliklari
+Afzalliklari:
+
+    Sodda va oson tushuniladi: Rekursiv yechim ko'pincha oddiy va intuitiv bo'ladi.
+    Tajriba va kod qisqarishi: Murakkab muammolarni hal qilish uchun kodni qisqartirish imkonini beradi.
+
+Kamchiliklari:
+
+    Xotira sarfi: Har bir rekursiv chaqiruv xotira (stack) sarf qiladi, bu esa juda chuqur rekursiyada xotira to'qnashuviga olib kelishi mumkin.
+    Vaqt murakkabligi: Ba'zi rekursiv algoritmlar, masalan, Fibonacci sonlarini hisoblashda, samarasiz bo'lishi mumkin, chunki ular bir xil hisob-kitoblarni bir necha marta takrorlashadi.
+
+Xulosa
+
+Rekursiya, dasturlashda muammolarni hal qilishda kuchli vosita bo'lib, juda murakkab bo'lmagan muammolar uchun ajoyib yechimlarni taklif qiladi. Biroq, rekursiya ishlatilganda ehtiyotkorlik bilan yondashish zarur, chunki xotira sarfi va samarasizlik masalalari paydo bo'lishi mumkin. Katta va chuqur rekursiv chaqiruvlarda iterativ yechimlar ko'proq afzal ko'riladi.
+
