@@ -1,0 +1,71 @@
+Lineer qidiruv (Linear Search) — bu oddiy qidirish algoritmi bo'lib, ma'lumotlar to'plamida ma'lum bir qiymatni topish uchun har bir elementni ketma-ket ravishda tekshirish usulidir. Bu algoritm kichik yoki tartibga solinmagan ma'lumotlar to'plamlarida oson va samarali ishlaydi.
+Algoritmning asosiy xususiyatlari:
+
+    Tartibsiz to'plamda ishlaydi: Lineer qidiruv tartibsiz ma'lumotlar to'plamida ham, tartibli to'plamda ham ishlaydi.
+
+    Osonlik bilan tushuniladi: Algoritm oddiyligi va soddaligi bilan ajralib turadi, shuning uchun uni o'rganish oson.
+
+    Natijalar: Agar qidirilayotgan qiymat ma'lumotlar to'plamida mavjud bo'lsa, algoritm uning indeksini qaytaradi; aks holda, mavjud emasligini bildirish uchun -1 qaytaradi.
+
+Algoritm qanday ishlaydi?
+
+Lineer qidiruv quyidagi qadamlar orqali ishlaydi:
+
+    Qidirilayotgan qiymatni belgilash.
+    Ma'lumotlar to'plamining har bir elementini tekshirish:
+        Agar element qidirilayotgan qiymatga teng bo'lsa, uning indeksini qaytaradi.
+        Agar element teng bo'lmasa, keyingi elementga o'tadi.
+    To'plamdagi barcha elementlar tekshirilganda, agar qidirilayotgan qiymat topilmasa, -1 qaytaradi.
+
+Algoritmning murakkabligi:
+
+    Vaqt murakkabligi: O(n), bu yerda n — ma'lumotlar to'plamidagi elementlar soni. Eng yomon holatda, qidiruv n ta elementni tekshirishni talab qiladi.
+    Xotira murakkabligi: O(1), chunki algoritm qo'shimcha xotira talab qilmaydi, faqat kerakli o'zgaruvchilarni saqlaydi.
+
+Psevdo-kod:
+
+Lineer qidiruvni ifodalovchi psevdo-kod quyidagicha ko'rinadi:
+
+plaintext
+
+function linearSearch(array, target):
+    for i from 0 to length(array) - 1:
+        if array[i] == target:
+            return i  // target topildi, uning indeksini qaytar
+    return -1  // target topilmadi
+
+Python misoli:
+
+Quyida lineer qidiruv algoritmini Python dasturlash tilida ko'rsatadigan misol keltirilgan:
+
+python
+
+def linear_search(arr, target):
+    for index, value in enumerate(arr):
+        if value == target:
+            return index  # topildi, indeksini qaytar
+    return -1  # topilmadi
+
+# Misol
+numbers = [10, 23, 45, 78, 56]
+target_number = 45
+result = linear_search(numbers, target_number)
+
+if result != -1:
+    print(f"{target_number} raqami {result}-indeksta topildi.")
+else:
+    print(f"{target_number} raqami topilmadi.")
+
+Afzalliklari:
+
+    Soddaligi: Lineer qidiruv algoritmi juda oddiy va tushunish oson.
+    Tartibsiz to'plamlar bilan ishlash: Bu algoritm tartibsiz ma'lumotlar to'plamlarida ham samarali ishlaydi.
+
+Kamchiliklari:
+
+    Seviyali samaradorlik: Katta ma'lumotlar to'plamida lineer qidiruv sekin bo'lishi mumkin, chunki har bir elementni tekshirish zarur.
+    Alternativ algoritmlarning mavjudligi: Agar ma'lumotlar tartiblangan bo'lsa, binar qidiruv algoritmini ishlatish samaraliroqdir.
+
+Xulosa:
+
+Lineer qidiruv oddiy, lekin samarali qidiruv algoritmidir. Kichik va tartibsiz ma'lumotlar to'plamlari uchun yaxshi variant hisoblanadi, ammo katta to'plamlarda samaradorligi past bo'lishi mumkin.
